@@ -1,0 +1,39 @@
+version: '2.1'
+
+services:
+
+  customer-service:
+    build: ./index
+    restart: always
+    ports:
+      - "82:82"
+    networks:
+      - overlay
+
+  book-service:
+    build: ./login
+    restart: always
+    ports:
+      - "83:83"
+    networks:
+      - overlay
+
+  lend-service:
+    build: ./Menu
+    restart: always
+    ports:
+      - "84:84"
+    networks:
+      - overlay
+
+  api:
+    build: ./Promocion
+    restart: always
+    ports:
+      - "85:85"
+    networks: 
+      - overlay
+
+networks:
+  overlay:
+    
